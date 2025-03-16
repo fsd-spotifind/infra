@@ -1,0 +1,39 @@
+name: Terraform Deployment
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs: 
+    terraform:
+        name: Terraform CI/CD
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout Repository
+              uses: actions/checkout@v4
+            
+            - name: Setup Terraform
+              uses: hashicorp/setup-terraform@v3
+              with:
+                terraform_version: latest
+            
+            - name: Terraform Init
+              run: terraform init
+              env:
+                TFE_TOKEN: ${{ secrets.TFE_TOKEN }}
+            
+            - name: Terraform Validate
+              run: terraform validate
+            
+            - name: Terraform Plan
+              run: terraform plan -out=tfplan
+
+            - name: Terraform Apply
+              run: terraform apply -auto-approve tfplan
