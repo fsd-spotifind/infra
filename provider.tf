@@ -6,7 +6,7 @@ terraform {
         }
     }
 
-    cloud {
+    backend "remote" {
         organization = "FSD_Spotifind"
         workspaces {
           name = "Spotifind"
