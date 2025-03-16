@@ -1,13 +1,6 @@
 terraform {
-    required_providers {
-        aws = {
-            source = "hashicorp/aws"
-            version = "~>5.0"
-        }
-    }
-
     backend "remote" {
-        organization = "FSD_Spotifind"
+        organization = "FSD-Spotifind"
         workspaces {
           name = "Spotifind"
         }
@@ -15,5 +8,5 @@ terraform {
 }
 
 provider "aws" {
-    region = "ap-southeast-1"
+  region  = "ap-southeast-1"
 }
