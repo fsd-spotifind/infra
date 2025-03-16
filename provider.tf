@@ -7,7 +7,7 @@ terraform {
     }
 
     backend "remote" {
-        organization = "FSD_Spotifind"
+        organization = "FSD-Spotifind"
         workspaces {
           name = "Spotifind"
         }
