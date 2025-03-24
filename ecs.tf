@@ -96,6 +96,26 @@ resource "aws_ecs_service" "ecs_service" {
   depends_on = [ aws_lb_listener.http_listener ]
 }
 
+resource "aws_security_group" "ecs_sg" {
+  name        = "spotifind_ecs_sg"
+  description = "Allow inbound traffic from ALB"
+  vpc_id      = aws_vpc.main.id
+
+  ingress {
+    from_port       = var.port
+    to_port         = var.port
+    protocol        = "tcp"
+    security_groups = [aws_security_group.alb_sg.id]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 resource "aws_cloudwatch_log_group" "ecs_logs" {
   name = "ecs/spotifind-logs"
 
