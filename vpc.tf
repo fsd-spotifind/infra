@@ -80,7 +80,7 @@ resource "aws_subnet" "private_b" {
   }
 }
 
-resource "aws_route_table" "private-a" {
+resource "aws_route_table" "private_a" {
   vpc_id = aws_vpc.main.id
 
   tags = {
@@ -88,7 +88,7 @@ resource "aws_route_table" "private-a" {
   }
 }
 
-resource "aws_route_table" "private-b" {
+resource "aws_route_table" "private_b" {
   vpc_id = aws_vpc.main.id
 
   tags = {
