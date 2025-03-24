@@ -1,0 +1,36 @@
+name: Terraform Deployment
+
+on:
+  pull_request:
+    paths:
+      - "*.tf"
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  terraform:
+    name: Terraform CI/CD
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set Up Terraform Credentials
+        run: echo 'credentials "app.terraform.io" { token = "${{ secrets.TFE_TOKEN }}" }' > ~/.terraformrc
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: latest
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
