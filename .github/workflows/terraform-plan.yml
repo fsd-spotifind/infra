@@ -29,6 +29,14 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
+      - name: Debug Variables
+        run: |
+          echo "PORT is ${{ secrets.TF_VAR_PORT }}"
+          echo "APP_ENV is ${{ secrets.TF_VAR_APP_ENV }}"
+          echo "DATABASE_URL is ${{ secrets.TF_VAR_DATABASE_URL }}"
+          echo "GITHUB_REF_NAME is ${{ secrets.TF_VAR_GITHUB_REF_NAME }}"
+          # Do not echo jwt_secret or any sensitive values
+
       - name: Terraform Validate
         run: terraform validate
 
