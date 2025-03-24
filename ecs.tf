@@ -47,49 +47,9 @@ resource "aws_ecs_task_definition" "ecs_task" {
       ]
 
       secrets = [
-        {
-          name      = "port"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "app_env"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_host"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_port"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_database"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_username"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_password"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "db_schema"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "github_ref_name"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "database_url"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
-        },
-        {
-          name = "jwt_secret"
-          valueFrom = aws_ssm_parameter.ecs_secrets.arn
+        for param in aws_ssm_parameter.env_vars : {
+          name = param.name
+          valueFrom = param.arn
         }
       ]
 
