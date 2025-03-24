@@ -35,6 +35,12 @@ jobs:
             
             - name: Terraform Plan
               run: terraform plan 
+              env:
+                TF_VAR_port: ${{ secrets.TF_VAR_PORT }}
+                TF_VAR_app_env: ${{ secrets.TF_VAR_APP_ENV }}
+                TF_VAR_database_url: ${{ secrets.TF_VAR_DATABASE_URL }}
+                TF_VAR_github_ref_name: ${{ secrets.TF_VAR_GITHUB_REF_NAME }}
+                TF_VAR_jwt_secret: ${{ secrets.TF_VAR_JWT_SECRET }}
 
             - name: Terraform Apply
               run: terraform apply -auto-approve 
