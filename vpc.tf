@@ -30,7 +30,7 @@ resource "aws_subnet" "public_b" {
   vpc_id                  = aws_vpc.main.id
   cidr_block              = "172.18.3.0/24"
   map_public_ip_on_launch = true
-  availability_zone       = "ap-southeast-1a"
+  availability_zone       = "ap-southeast-1b"
 
   tags = {
     Name = "spotifind-public-subnet-b"
@@ -62,7 +62,7 @@ resource "aws_route_table_association" "public_b" {
 
 resource "aws_subnet" "private_a" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "172.19.2.0/24"
+  cidr_block        = "172.18.4.0/24"
   availability_zone = "ap-southeast-1a"
 
   tags = {
@@ -72,7 +72,7 @@ resource "aws_subnet" "private_a" {
 
 resource "aws_subnet" "private_b" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "172.19.3.0/24"
+  cidr_block        = "172.18.5.0/24"
   availability_zone = "ap-southeast-1b"
 
   tags = {
