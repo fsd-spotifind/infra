@@ -40,8 +40,8 @@ resource "aws_ecs_task_definition" "ecs_task" {
       essential = true
       portMappings = [
         {
-          containerPort = 80
-          hostPort      = 80
+          containerPort = var.port
+          hostPort      = var.port
           protocol      = "tcp"
         }
       ]
@@ -82,7 +82,7 @@ resource "aws_ecs_service" "ecs_service" {
   load_balancer {
     target_group_arn = aws_lb_target_group.ecs_tg.arn
     container_name = "spotifind-container"
-    container_port = 80
+    container_port = var.port
   }
 
   depends_on = [ aws_lb_listener.http_listener ]
