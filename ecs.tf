@@ -48,7 +48,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
 
       secrets = [
         for param in aws_ssm_parameter.env_vars : {
-          name = param.name
+          name = split("/", param.name)[length(split("/", param.name)) - 1]
           valueFrom = param.arn
         }
       ]
