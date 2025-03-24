@@ -42,7 +42,8 @@ resource "aws_lb_target_group" "ecs_tg" {
   target_type = "ip"
 
   health_check {
-    path                = "/"
+    path                = "/health"
+    port                = var.port
     interval            = 30
     timeout             = 5
     healthy_threshold   = 2
