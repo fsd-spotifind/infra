@@ -22,3 +22,4 @@ variable "jwt_secret" {
   description = "The secret to sign the JWT token"
   type        = string
 }
+
