@@ -2,6 +2,7 @@ resource "aws_ssm_parameter" "env_vars" {
   for_each = {
     "PORT" = var.port,
     "JWT_SECRET" = var.jwt_secret,
+    "DATABASE_URL" = var.database_url
   }
   name = "/spotifind/${each.key}"
   type = "SecureString"
