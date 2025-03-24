@@ -1,4 +1,4 @@
-name: Terraform Deployment
+name: Terraform Plan
 
 on:
   pull_request:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   terraform:
-    name: Terraform CI/CD
+    name: Plan Terraform on PR
     runs-on: ubuntu-latest
 
     steps:
