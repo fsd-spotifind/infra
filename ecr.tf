@@ -3,6 +3,11 @@ resource "aws_ecr_repository" "ecr_repo" {
     image_tag_mutability = "MUTABLE"
 }
 
+data "aws_ecr_image" "latest_image" {
+  repository_name = aws_ecr_repository.ecr_repo.name
+  most_recent = true
+}
+
 resource "aws_ecr_lifecycle_policy" "my_ecr_policy" {
   repository = aws_ecr_repository.ecr_repo.name
 
