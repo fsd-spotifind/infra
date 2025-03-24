@@ -35,7 +35,7 @@ resource "aws_route_table" "public" {
     }
 
     tags = {
-        Name = "public-rt"
+        Name = "spotifind-public-rt"
     }
 }
 
