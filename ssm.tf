@@ -31,6 +31,6 @@ resource "aws_iam_policy" "ssm_read_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_ssm_policy_attach" {
-  role       = aws_iam_role.ecs_task_role.name
+  role       = aws_iam_role.ecs_task_execution_role.name
   policy_arn = aws_iam_policy.ssm_read_policy.arn
 }
