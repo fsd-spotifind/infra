@@ -1,0 +1,11 @@
+port = 8080
+app_env = "local"
+db_host = "localhost"
+db_port = 5432
+db_database = "fsd-db"
+db_username = "test"
+db_password = "test"
+db_schema = "public"
+github_ref_name = "spotifind"
+database_url = "postgresql://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATABASE}?schema=${DB_SCHEMA}"
+jwt_secret = "spotifind"
