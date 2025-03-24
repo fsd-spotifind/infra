@@ -36,13 +36,13 @@ jobs:
             - name: Terraform Plan
               run: terraform plan 
               env:
-                port: ${{ secrets.TF_VAR_PORT }}
-                database_url: ${{ secrets.TF_VAR_DATABASE_URL }}
-                jwt_secret: ${{ secrets.TF_VAR_JWT_SECRET }}
+                TF_VAR_port: ${{ secrets.TF_VAR_PORT }}
+                TF_VAR_database_url: ${{ secrets.TF_VAR_DATABASE_URL }}
+                TF_VAR_jwt_secret: ${{ secrets.TF_VAR_JWT_SECRET }}
 
             - name: Terraform Apply
               run: terraform apply -auto-approve 
               env:
-                port: ${{ secrets.TF_VAR_PORT }}
-                database_url: ${{ secrets.TF_VAR_DATABASE_URL }}
-                jwt_secret: ${{ secrets.TF_VAR_JWT_SECRET }}
+                TF_VAR_port: ${{ secrets.TF_VAR_PORT }}
+                TF_VAR_database_url: ${{ secrets.TF_VAR_DATABASE_URL }}
+                TF_VAR_jwt_secret: ${{ secrets.TF_VAR_JWT_SECRET }}
