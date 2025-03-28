@@ -71,7 +71,7 @@ resource "aws_lb_target_group" "ecs_tg" {
   health_check {
     path                = "/health"
     port                = var.port
-    protocol            = "HTTPS"
+    protocol            = "HTTP"
     interval            = 30
     timeout             = 5
     healthy_threshold   = 2
