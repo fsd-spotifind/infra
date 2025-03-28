@@ -35,7 +35,7 @@ resource "aws_ecs_task_definition" "ecs_task" {
     {
       name      = "spotifind-container"
       image     = "${aws_ecr_repository.ecr_repo.repository_url}@${data.aws_ecr_image.latest_image.image_digest}"
-      cpu       = 512
+      cpu       = 256
       memory    = 1024
       essential = true
       portMappings = [
@@ -85,7 +85,7 @@ resource "aws_ecs_service" "ecs_service" {
     container_port = var.port
   }
 
-  depends_on = [ aws_lb_listener.http_listener ]
+  depends_on = [ aws_lb_listener.http_redirect, aws_lb_listener.https ]
 }
 
 resource "aws_security_group" "ecs_sg" {
