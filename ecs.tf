@@ -85,7 +85,7 @@ resource "aws_ecs_service" "ecs_service" {
     container_port = var.port
   }
 
-  depends_on = [ aws_lb_listener.http_listener ]
+  depends_on = [ aws_lb_listener.http_redirect, aws_lb_listener.https ]
 }
 
 resource "aws_security_group" "ecs_sg" {
