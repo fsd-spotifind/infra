@@ -46,13 +46,13 @@ resource "aws_ecs_task_definition" "ecs_task" {
         }
       ]
 
-      healthCheck = {
-        "command"     = ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
-        "interval"    = 30
-        "timeout"     = 5
-        "retries"     = 3
-        "startPeriod" = 10
-      }
+      # healthCheck = {
+      #   "command"     = ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
+      #   "interval"    = 30
+      #   "timeout"     = 5
+      #   "retries"     = 3
+      #   "startPeriod" = 10
+      # }
 
       secrets = [
         for param in aws_ssm_parameter.env_vars : {
