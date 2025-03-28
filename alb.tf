@@ -63,7 +63,7 @@ resource "aws_acm_certificate" "alb_cert" {
 resource "aws_lb_target_group" "ecs_tg" {
   name     = "spotifind-ecs-tg"
   port     = var.port
-  protocol = "HTTPS"
+  protocol = "HTTP"
   vpc_id   = aws_vpc.main.id
 
   target_type = "ip"
