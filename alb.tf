@@ -63,7 +63,7 @@ resource "aws_acm_certificate" "alb_cert" {
 resource "aws_lb_target_group" "ecs_tg" {
   name     = "spotifind-ecs-tg"
   port     = var.port
-  protocol = "HTTP"
+  protocol = "HTTPS"
   vpc_id   = aws_vpc.main.id
 
   target_type = "ip"
@@ -71,6 +71,7 @@ resource "aws_lb_target_group" "ecs_tg" {
   health_check {
     path                = "/health"
     port                = var.port
+    protocol            = "HTTPS"
     interval            = 30
     timeout             = 5
     healthy_threshold   = 2
