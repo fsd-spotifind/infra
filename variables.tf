@@ -14,3 +14,14 @@ variable "jwt_secret" {
   sensitive = true
 }
 
+variable "spotify_client_id" {
+  description = "The Spotify client ID"
+  type        = string
+  sensitive = true
+}
+
+variable "spotify_client_secret" {
+  description = "The Spotify client secret"
+  type        = string
+  sensitive = true
+}

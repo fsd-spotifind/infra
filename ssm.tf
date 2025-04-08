@@ -3,6 +3,8 @@ resource "aws_ssm_parameter" "env_vars" {
     "PORT" = var.port,
     "JWT_SECRET" = var.jwt_secret,
     "DATABASE_URL" = var.database_url
+    "SPOTIFY_CLIENT_ID" = var.spotify_client_id,
+    "SPOTIFY_CLIENT_SECRET" = var.spotify_client_secret
   }
   name = "/spotifind/${each.key}"
   type = "SecureString"
