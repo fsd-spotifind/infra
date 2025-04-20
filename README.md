@@ -1,5 +1,7 @@
 This is the infrastructure repository for our Spotifind Project.
 
+GitHub: [link](https://github.com/fsd-spotifind/infra
+
 This project uses Terraform CLI-driven workflows, run from our GitHub Actions pipelines (One for Plan - to be run for PRs on all branches and one for Apply - run on merge from main)
 
 Ensure that you have your Terraform Cloud account set up. We use this for remote infrastructure state tracking.
